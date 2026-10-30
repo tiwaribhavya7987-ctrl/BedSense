@@ -1,0 +1,24 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "bedsense": {
+      "bed1": {
+        ".read": "auth != null && auth.token.admin === true",
+        ".write": "auth != null && auth.token.device === true"
+      },
+      "commands": {
+        "current": {
+          ".read": "auth != null && auth.token.device === true",
+          ".write": "auth != null && auth.token.admin === true"
+        }
+      },
+      "commandAcks": {
+        "$commandId": {
+          ".read": "auth != null && auth.token.admin === true",
+          ".write": "auth != null && auth.token.device === true"
+        }
+      }
+    }
+  }
+}
